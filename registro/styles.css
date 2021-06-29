@@ -1,0 +1,123 @@
+/*Usando Arquitectura BEM*/
+body{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: 'Mulish', sans-serif;
+}
+.header{
+    background-color: #3a86ff;
+    color: white;
+    width: 100%;
+    height: 40%;
+    box-sizing: 0;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__img{
+    width: 210px;
+    height: 80px;
+    margin: 10px 0px 0px 10px;
+    cursor: pointer;
+}
+.registro{
+    background: linear-gradient(#3a86ff, #8338EC);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 30px;
+    min-height: calc(100vh - 200px);
+}
+.registro__container{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
+    padding: 60px 68px 40px;
+    min-height: 600px;
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.registro__container--form{
+    display: flex;
+    flex-direction: column;
+}
+.registro__container--inicia {
+    font-size: 14px;
+}
+.registro__container--inicia a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+}
+.registro__container--inicia a:hover{
+    text-decoration: underline;
+}
+input{
+    background-color: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    height: 50px;
+    color: white;
+}
+::placeholder{
+    color: white;
+}
+.button{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    height: 50px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 10px 0px ;
+    outline: none;
+}
+.footer{
+    display: flex;
+    align-items: center;
+    height: 110px;
+    width: 100%;
+    background-color: #8338EC;
+}
+.footer a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    padding-left: 30px;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+@media only screen and (max-width: 600px) {
+    .registro__container{
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        width: 100%;
+    }
+    .footer{
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

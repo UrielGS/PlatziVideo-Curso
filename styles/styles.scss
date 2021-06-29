@@ -1,0 +1,298 @@
+/*Usando la arquitectura BEM (BLOQUE__ELEMTENTO--MODIFICADOR)*/
+//En SASS SE PUEDEN USAR CLASES Y HEREDARLAS, TAMBIEN SE PUEDEN ANIDAR, POR LO QUE, ESTILOS DE UN HIJO, LOS PUEDO PONER DENTRO DE UN PADRE
+
+/*.flex{
+  display: flex;
+  align-items: center;
+}*/
+//En lugar de usar esta Herencia puedo usar mixin
+//Sirve pa lo mismo pero se pueder usar varias veces con distintos parametros y valores
+//en lugar de extend se usa include
+
+$fontF: 'Mulish', sans-serif;
+$colorP: #8338EC;
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin size($largo, $ancho) {
+  width: $largo;
+  height: $ancho;
+}
+body{
+    margin: 0px;
+    @include size(100%, 100%);
+    background-color: $colorP;
+    font-family: $fontF;
+}
+.header{
+    @include flex;
+    @include size(100%, 40%);
+    //@extend .flex;
+    background-color: $colorP;
+    box-sizing: 0;
+    //display: flex;
+    justify-content: space-between;
+    //align-items: center;
+}
+.header__img{ 
+    @include size(210px, 80px);
+    margin: 10px 0px 0px 10px;
+}
+.header__menu{
+    margin-right: 30px ;
+    align-items: center;
+    
+    ul{
+      display: none;
+      list-style: none;
+      padding: 0px;
+      position: absolute;
+      width: 100px;
+      text-align: right;
+      margin: 0px 0px 0px -14px;
+    }
+    li{
+      margin: 10px 0px;
+      font-family: $fontF;
+
+      a{
+        color: white;
+        text-decoration: none;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+    }
+}
+
+.header__menu:hover ul, ul:hover{
+    display: block;
+}
+.header__menu--profile{
+    margin-right: 8px;
+    @include flex;
+    
+    img{
+      margin-right: 8px;
+      @include size(40px, 40px);
+      width: 40px;
+      height: 40px;
+    }
+    p{
+      margin: 0px;
+      color: white;
+    }
+}
+
+.main{
+    height: 300px;
+    @include flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.main__title{
+    color: white;
+    font-size: 25px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.input{
+    @include size(70%, 40px);
+    background-color: rgba(255, 255, 255, 0.1) ;
+    border: 2px solid white;
+    border-radius: 22px;
+    color: white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    padding: 0px 20px;
+    outline: none;
+
+}
+::placeholder{
+    color: white;
+}
+
+/*PARA EL CARROUSEL*/
+.carousel {
+    overflow: hidden;
+    padding-left: 30px;
+    width: 100%;
+    position: relative;
+  }
+  
+  .carousel__container {
+    transition: 450ms -webkit-transform;
+    transition: 450ms transform;
+    transition: 450ms transform, 450ms -webkit-transform;
+    font-size: 0;
+    white-space: nowrap;
+    margin: 70px 0px;
+    padding-bottom: 10px;
+  }
+  
+  .carousel__container:hover .carousel-item {
+    opacity: 0.3;
+  }
+  
+  .carousel__container:hover .carousel-item:hover {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+    opacity: 1;
+  }
+  
+  .carousel-item {
+    @include size(190px, 250px);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 450ms all;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+  }
+  
+  .carousel-item:hover ~ .carousel-item {
+    -webkit-transform: translate3d(100px, 0, 0);
+            transform: translate3d(100px, 0, 0);
+  }
+  
+  .carousel-item__img {
+    @include size(200px, 250px);
+    /*Ajusta el tamaño de la imagen al contenedor padre*/
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  
+  .carousel-item__details {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    font-size: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transition: 450ms opacity;
+    padding: 10px;
+    position: absolute;
+  }
+  
+  .carousel-item__details--img {
+    width: 20px;
+  }
+  
+  .carousel-item:hover .carousel-item__details {
+    opacity: 1;
+  }
+  
+  .carousel-item__details--title {
+    color: white;
+    margin: 5px 0px 0px 0px;
+  }
+  
+  .carousel-item__details--subtitle {
+    color: white;
+    font-size: 8px;
+    margin: 3px 0px;
+  }
+
+/*Los estilos del footer*/
+.footer{
+    @include flex;
+    @include size(100%, 110px);
+    background-color: #03045E;
+    
+    a{
+      color: white;
+      text-decoration: none;
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      padding-left: 30px;
+      font-weight: bold;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+}
+
+/*PARA EL ERROR 404*/
+.main__error{
+    color: white;
+    font-size: 18px;
+    font-weight: normal;
+}
+.box {
+    @include size(500px, 150px);
+    float: left;
+    border: none;
+    overflow: hidden;
+    flex-direction: row;
+    justify-content: center;
+    @include flex;
+  }
+  
+  .text {
+    text-align: center;
+    margin-top: 56px;
+    color: #fff;
+    font-size: 4.0em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+  }
+  
+  .animated {
+    animation-duration: 2.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+  }
+  //Usando mixin para la animacion
+  @mixin movimiento($rotar, $timing, $origin) {
+    transform: $rotar;
+    animation-timing-function: $timing;
+    transform-origin: $origin;
+  }
+@keyframes hinge {
+    0% {@include movimiento(rotate(0deg), ease-in-out, top left)}
+    20%, 60% {@include movimiento(rotate(80deg), ease-in-out, top left)}
+    40%, 80% {@include movimiento(rotate(60deg), ease-in-out, top left)}
+    100% {transform: translateY(700px);}
+  }
+  .hinge {
+    margin: 20px;
+    animation-name: hinge;
+  }
+/*PARA EL DISEÑO RESPONSIVO*/
+@media only screen and (max-width: 450px) {
+    .carousel{
+        position: relative;
+        margin-left: 16%;
+        
+    }
+    .carousel-item{
+        border: none;
+        display: block;
+        position: relative;
+        transform-origin: top left;
+        margin-bottom: 10px;
+    }
+    .carousel-item:hover ~ .carousel-item {
+        -webkit-transform: translate3d(0px, 0, 0);
+                transform: translate3d(0px, 140px, 10px);
+      }
+    .footer{
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        padding: 0%;
+    }
+}
